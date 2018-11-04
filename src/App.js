@@ -6,9 +6,9 @@ class App extends Component {
 
   state = {
     persons: [
-      { name: 'Max', age: 28},
-      { name: 'Manu', age: 29},
-      { name: 'Stephanie', age: 26}
+      { id: 'vas' , name: 'Max', age: 28},
+      { id: 'das' , name: 'Manu', age: 29},
+      { id: 'was' , name: 'Stephanie', age: 26}
     ],
     otherState: 'some other value',
     showPersons: false
@@ -25,11 +25,7 @@ class App extends Component {
   }
 
   deletePersonHandler = (personIndex) => {
-
-    const persons = this.state.persons.slice(); // slice copies new array
-    //  OR USE
     const persons = [...this.state.persons];
-
     persons.splice(personIndex, 1); // deletes
     this.setState({persons: persons}) // points current persons to new persons
   }
@@ -57,7 +53,8 @@ class App extends Component {
             return <Person
               click={() => this.deletePersonHandler(index)}
               name={person.name} 
-              age={person.age} />
+              age={person.age} 
+              key={person.id} />
           })}
         </div> 
       );
