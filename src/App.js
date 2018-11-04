@@ -25,7 +25,11 @@ class App extends Component {
   }
 
   deletePersonHandler = (personIndex) => {
-    const persons = this.state.persons; // pointer to new temp persons
+
+    const persons = this.state.persons.slice(); // slice copies new array
+    //  OR USE
+    const persons = [...this.state.persons];
+
     persons.splice(personIndex, 1); // deletes
     this.setState({persons: persons}) // points current persons to new persons
   }
